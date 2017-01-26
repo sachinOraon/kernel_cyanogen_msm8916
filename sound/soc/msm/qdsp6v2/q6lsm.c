@@ -1145,6 +1145,12 @@ static int q6lsm_cmd(struct lsm_client *client, int opcode, bool wait)
 	return rc;
 }
 
+/* Need to modify this for <Fix all GCC 6.x warnings>
+   memset(&ids, sizeof(ids), 0);
+   as
+   memset(&ids, 0, sizeof(ids));
+*/
+
 int q6lsm_start(struct lsm_client *client, bool wait)
 {
 	return q6lsm_cmd(client, LSM_SESSION_CMD_START, wait);
