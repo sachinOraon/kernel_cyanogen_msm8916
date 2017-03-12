@@ -1,4 +1,5 @@
 CFLAGS_schBeaconGen.o := -Wno-discarded-array-qualifiers
+CFLAGS_KERNEL := -Wno-logical-not-parentheses
 
 MODNAME := wlan
 WLAN_ROOT := drivers/staging/prima
