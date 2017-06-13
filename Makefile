@@ -343,7 +343,7 @@ CHECK		= sparse
 
 CHECKFLAGS     := -D__linux__ -Dlinux -D__STDC__ -Dunix -D__unix__ \
 		  -Wbitwise -Wno-return-void $(CF)
-GRAPHITE	= -fgraphite-identity -floop-parallelize-all -ftree-loop-linear -floop-interchange -floop-strip-mine -floop-block -floop-flatten
+GRAPHITE	= -fgraphite-identity -floop-parallelize-all -ftree-loop-linear -floop-interchange -floop-strip-mine -floop-block -floop-flatten -mcpu=cortex-a57 -mtune=cortex-a57
 FLAGS_MODULE   = $(GRAPHITE)
 AFLAGS_MODULE   = $(GRAPHITE)
 LDFLAGS_MODULE  =  --strip-debug
@@ -351,7 +351,7 @@ CFLAGS_KERNEL	= $(GRAPHITE) -fmodulo-sched -fmodulo-sched-allow-regmoves -ftree-
 AFLAGS_KERNEL	= $(GRAPHITE)
 
 # ak flags optimization
-ARM64_ARCH_OPT := -mcpu=cortex-a53 -mtune=cortex-a53 \
+ARM_ARCH_OPT := -mcpu=cortex-a53 -mtune=cortex-a53 -mcpu=cortex-a57 -mtune=cortex-a57 \
  -g0 \
  -DNDEBUG \
  -fomit-frame-pointer \
@@ -400,6 +400,7 @@ KBUILD_CFLAGS   :=$(GRAPHITE) -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
                    -fmodulo-sched -fmodulo-sched-allow-regmoves -fno-tree-vectorize -ffast-math \
                    -funswitch-loops -fpredictive-commoning -fgcse-after-reload \
                    -fno-aggressive-loop-optimizations \
+                   -march=armv8-a+crc -mtune=cortex-a57.cortex-a53 -mcpu=cortex-a57.cortex-a53 \
                    $(ARM64_ARCH_OPT)
 
 KBUILD_AFLAGS_KERNEL := $(ARM64_ARCH_OPT)
