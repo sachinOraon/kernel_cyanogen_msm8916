@@ -5234,9 +5234,6 @@ static int iris_fops_open(struct file *f) {
 static const struct v4l2_file_operations iris_fops = {
 	.owner = THIS_MODULE,
 	.unlocked_ioctl = video_ioctl2,
-#ifdef CONFIG_COMPAT
-	.compat_ioctl32 = v4l2_compat_ioctl32,
-#endif
 	.release        = iris_fops_release,
 #ifndef MODULE
 	.open           = iris_fops_open,
