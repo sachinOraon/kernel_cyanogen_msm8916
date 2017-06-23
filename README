@@ -1,3 +1,29 @@
+----------------------------------------------------------------------
+Currently this source contains cherry-picks of
+
+* CPU govs - Darkness, Alucard, Lionfish, Intel, Lagfree, Relaxed
+* IO schedulers - FIOPS, sioplus, zen, maple
+* TCP congestion algorithms - highspeed, htcp, hybla, illinois, scalable, vegas, veno, westwood, yeah, bic, LP
+* Alucard Hotplug
+* USB fast charging
+* PowerSuspend Driver
+* Adreno Idler
+* F2FS
+* SDcardFS
+* kCAL colour control
+* Kexec hardboot patch
+* Faux Sound control
+* Ultra Kernel Samepage Merging
+* DTS Eagle integration
+* Franco's thermal driver
+* ThunderCharge
+* PowerEfficent Workqueue
+* Dynamic Fsync
+* wakelock toggles
+* GPU Freq:Idle=19MHz Normal=310MHz High=465MHz
+* Various Optimization Flags
+* Compatible with GCC 6.x
+-------------------------------------------------------------------
         Linux kernel release 3.x <http://kernel.org/>
 
 These are the release notes for Linux version 3.  Read them carefully,
