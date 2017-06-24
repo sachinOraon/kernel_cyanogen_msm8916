@@ -9,6 +9,7 @@ Currently this source contains cherry-picks of
 * PowerSuspend Driver
 * Adreno Idler
 * F2FS
+* Offline Gesture
 * SDcardFS
 * kCAL colour control
 * Kexec hardboot patch
