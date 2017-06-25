@@ -1,14 +1,15 @@
 ----------------------------------------------------------------------
 Currently this source contains cherry-picks of
 
-* CPU govs - Darkness, Alucard, Lionfish, Intel, Lagfree, Relaxed
+* CPU govs - Darkness, Alucard, Lionfish, Intel, Lagfree, Relaxed, Cultivation, Hyper
 * IO schedulers - FIOPS, sioplus, zen, maple
-* TCP congestion algorithms - highspeed, htcp, hybla, illinois, scalable, vegas, veno, westwood, yeah, bic, LP
+* TCP congestion algorithms - htcp, hybla, illinois, scalable, vegas, veno, westwood, yeah, bic, LP
 * Alucard Hotplug
 * USB fast charging
 * PowerSuspend Driver
 * Adreno Idler
 * F2FS
+* exFAT
 * Offline Gesture
 * SDcardFS
 * kCAL colour control
@@ -18,10 +19,16 @@ Currently this source contains cherry-picks of
 * DTS Eagle integration
 * Franco's thermal driver
 * ThunderCharge
+* Frandom
+* Zswap
+* Zpool
 * PowerEfficent Workqueue
+* Idle power collapse
+* Zen-Tune
 * Dynamic Fsync
 * wakelock toggles
 * GPU Freq:Idle=19MHz Normal=310MHz High=465MHz
+* Misc. Tweaks
 * Various Optimization Flags
 * Compatible with GCC 6.x
 -------------------------------------------------------------------
