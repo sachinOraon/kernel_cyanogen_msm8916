@@ -22,11 +22,15 @@ Currently this source contains cherry-picks of
 * Frandom
 * Zswap
 * Zpool
+* Zram from Linux 4.1
 * PowerEfficent Workqueue
+* Yulong Color Enhance
 * Idle power collapse
 * Zen-Tune
 * Dynamic Fsync
-* wakelock toggles
+* Wakelock toggles
+* Optimized ARM RWSEM algorithm
+* ARCH_POWER & Gentle fair sleepers
 * GPU Freq:Idle=19MHz Normal=310MHz High=465MHz
 * Misc. Tweaks
 * Various Optimization Flags
