@@ -2553,7 +2553,7 @@ static int gsl_ts_probe(struct i2c_client *client, const struct i2c_device_id *i
 		input_set_capability(ddata->idev, EV_KEY, KEY_GESTURE_SLIDE_DOWN);
 		input_set_capability(ddata->idev, EV_KEY, KEY_GESTURE_SLIDE_LEFT);
 		input_set_capability(ddata->idev, EV_KEY, KEY_GESTURE_SLIDE_RIGHT);
-                atomic_set(&double_tap_enable, 0);
+                atomic_set(&double_tap_enable, 1);
 		atomic_set(&music_enable, 0);
 		atomic_set(&camera_enable, 0);
 		atomic_set(&flashlight_enable, 0);
