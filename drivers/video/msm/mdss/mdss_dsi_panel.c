@@ -38,7 +38,7 @@
 #define NT35596_BUF_5_STATUS 0x80
 #define NT35596_MAX_ERR_CNT 2
 
-#define MIN_REFRESH_RATE 30
+#define MIN_REFRESH_RATE 48
 
 bool display_on = true;
 
