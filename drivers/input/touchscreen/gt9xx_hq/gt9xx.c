@@ -67,6 +67,10 @@
 #include <linux/input/mt.h>
 #endif
 
+#ifdef CONFIG_TOUCHSCREEN_DOUBLETAP2WAKE
+#include <linux/input/doubletap2wake.h>
+#endif
+
 #ifdef CONFIG_GET_HARDWARE_INFO
 #include <mach/hardware_info.h>
 static char tmp_tp_name[100];
@@ -3428,6 +3432,15 @@ static int fb_notifier_callback(struct notifier_block *self,
 	struct goodix_ts_data *ts =
 		container_of(self, struct goodix_ts_data, fb_notif);
 
+	#ifdef CONFIG_TOUCHSCREEN_DOUBLETAP2WAKE
+	bool prevent_sleep = (dt2w_switch > 0);
+		if (prevent_sleep) {
+			pr_debug("suspend avoided!\n");
+			synaptics_dsx_enable_wakeup_source(rmi4_data, true);
+			return 0;
+		}
+	#endif
+
 	if (evdata && evdata->data && event == FB_EVENT_BLANK &&
 			ts && ts->client) {
 		blank = evdata->data;
@@ -3436,7 +3449,9 @@ static int fb_notifier_callback(struct notifier_block *self,
 		else if (*blank == FB_BLANK_POWERDOWN)
 			goodix_ts_suspend(ts);
 	}
-
+#ifdef CONFIG_TOUCHSCREEN_DOUBLETAP2WAKE
+	}
+#endif
 	return 0;
 }
 #elif defined(CONFIG_HAS_EARLYSUSPEND)
