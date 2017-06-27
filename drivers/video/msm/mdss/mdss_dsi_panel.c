@@ -26,6 +26,10 @@
 #include "mdss_dsi.h"
 #include "mdss_livedisplay.h"
 
+#ifdef CONFIG_TOUCHSCREEN_DOUBLETAP2WAKE
+#include <linux/input/doubletap2wake.h>
+#endif
+
 #ifdef CONFIG_POWERSUSPEND
 #include <linux/powersuspend.h>
 #endif
@@ -664,6 +668,12 @@ static int mdss_dsi_panel_on(struct mdss_panel_data *pdata)
 	struct mdss_dsi_ctrl_pdata *ctrl = NULL;
 	struct mdss_panel_info *pinfo;
 
+	#ifdef CONFIG_TOUCHSCREEN_DOUBLETAP2WAKE
+	bool prevent_sleep = (dt2w_switch > 0);
+	if (prevent_sleep && in_phone_call)
+		prevent_sleep = false;
+	#endif
+
 	if (pdata == NULL) {
 		pr_err("%s: Invalid input data\n", __func__);
 		return -EINVAL;
@@ -698,6 +708,13 @@ static int mdss_dsi_panel_on(struct mdss_panel_data *pdata)
 end:
 	pinfo->blank_state = MDSS_PANEL_BLANK_UNBLANK;
 	pr_debug("%s:-\n", __func__);
+
+	#ifdef CONFIG_TOUCHSCREEN_DOUBLETAP2WAKE
+	if (prevent_sleep) {
+		dt2w_scr_suspended = false;
+	}
+	#endif
+
 	return 0;
 }
 
@@ -705,6 +722,12 @@ static int mdss_dsi_panel_off(struct mdss_panel_data *pdata)
 {
 	struct mdss_dsi_ctrl_pdata *ctrl = NULL;
 	struct mdss_panel_info *pinfo;
+
+	#ifdef CONFIG_TOUCHSCREEN_DOUBLETAP2WAKE
+	bool prevent_sleep = (dt2w_switch > 0);
+	if (prevent_sleep && in_phone_call)
+		prevent_sleep = false;
+	#endif
 
 	if (pdata == NULL) {
 		pr_err("%s: Invalid input data\n", __func__);
@@ -738,6 +761,13 @@ static int mdss_dsi_panel_off(struct mdss_panel_data *pdata)
 end:
 	pinfo->blank_state = MDSS_PANEL_BLANK_BLANK;
 	pr_debug("%s:-\n", __func__);
+
+	#ifdef CONFIG_TOUCHSCREEN_DOUBLETAP2WAKE
+	if (prevent_sleep) {
+		dt2w_scr_suspended = true;
+	}
+	#endif
+
 	return 0;
 }
 
