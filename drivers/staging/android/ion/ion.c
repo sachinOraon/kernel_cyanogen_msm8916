@@ -614,6 +614,12 @@ void ion_free(struct ion_client *client, struct ion_handle *handle)
 }
 EXPORT_SYMBOL(ion_free);
 
+/* Need to modify this for <Fix more GCC 7.x warnings>
+  if (handle->user_ref_count == 0) {
+  as
+  if (!(handle->user_ref_count > 0)) {
+*/
+
 int ion_phys(struct ion_client *client, struct ion_handle *handle,
 	     ion_phys_addr_t *addr, size_t *len)
 {
